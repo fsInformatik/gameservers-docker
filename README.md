@@ -58,6 +58,16 @@ docker network create --driver ipvlan --subnet=10.0.0.0/24 -o parent=eth0 --ip-r
 
 # If the above command doesn't work, try using macvlan instead of ipvlan
 
+OUR CONFIG
+
+Lanomat 1:
+
+ docker network create --driver macvlan --subnet=10.200.0.0/24 -o parent=enp0s25 --ip-range 10.200.0.16/28 --gateway 10.200.0.1  gameservers
+
+Lanomat 2:
+
+docker network create --driver macvlan --subnet=10.200.0.0/24 -o parent=enp0s25 --ip-range 10.200.0.32/28 --gateway 10.200.0.1  gameservers
+
 # Starts your game server inside the layer 2 network
 docker run -it --rm --net=gameservers csgo /steam/csgo/srcds_run -game csgo +sv_lan 1 +map cs_office
 ```
